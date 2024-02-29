@@ -7,6 +7,9 @@ public class FireCollisionAudioScript : MonoBehaviour
 {
     public AudioSource audioPlayerFire;
     public AudioSource audioPlayerGround;
+    public GameObject fireBigger;
+    public GameObject fireEvenBigger;
+    private bool isFireBigger = false;
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -16,6 +19,11 @@ public class FireCollisionAudioScript : MonoBehaviour
         }
         else if (collision.gameObject.tag == "CampFireTag") {
             audioPlayerFire.Play();
+            fireBigger.SetActive(true);
+            isFireBigger = true;
+        } else if (collision.gameObject.tag == "CampFireTag" && isFireBigger)
+        {
+            fireEvenBigger.SetActive(true);
         }
     }
 }
