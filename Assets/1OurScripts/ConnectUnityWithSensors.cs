@@ -17,8 +17,13 @@ public class ConnectUnityWithSensors : MonoBehaviour
     private bool forceDataReceived = false;
     private int receivedForceValue = 0;
 
+    public static bool isForceDetected = false;
+
+    public BoundEarthScript earthScript = new BoundEarthScript();
+
     void Start()
     {
+
         ConnectWithESP32();
         
     }
@@ -51,14 +56,25 @@ public class ConnectUnityWithSensors : MonoBehaviour
 
     void Update()
     {
-        if (forceDataReceived)
+        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared)
         {
-            if (receivedForceValue > 50)
+            Debug.Log("Asking for force.");
+
+            ws.Send("Need Force");
+
+            if (forceDataReceived)
             {
-                Debug.Log("Force threshold exceeded, action triggered.");
+                if (receivedForceValue > 40)
+                {
+                    Debug.Log("Force threshold exceeded, action triggered.");
+                    isForceDetected = true;
+                    earthScript.collectForce();
+
+                }
+                forceDataReceived = false; // Reset for the next message
             }
-            forceDataReceived = false; // Reset for the next message
         }
+
     }
 
     void OnDestroy()
@@ -68,4 +84,5 @@ public class ConnectUnityWithSensors : MonoBehaviour
             ws.Close();
         }
     }
+
 }

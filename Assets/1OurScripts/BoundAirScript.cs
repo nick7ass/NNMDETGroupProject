@@ -6,18 +6,22 @@ public class BoundAirScript : MonoBehaviour
 {
     public ParticleSystem masterEmitter; // Assign in the inspector
     public ParticleSystem slaveEmitter; // Assign in the inspector
-
-
     public GameObject moreSpirals;
     private float defaultLifetime = 0.5f; // Default start lifetime, adjust as needed
     public float fasterLifetime = 2.0f; // Example faster lifetime, adjust as needed
     public bool isWindActive = false;
-    private bool canActivateAir = false;
+    public bool canActivateAir = false;
 
-    public GameObject TestAir;
+    public bool narrationHasPlayed = false;
     public AudioSource audioSource;
     public AudioClip narrationClip;
-    
+
+    public GameObject TestAir;
+
+    public GameObject BoundFire;
+    public GameObject BoundWater;
+    public GameObject BoundEarth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,43 +34,53 @@ public class BoundAirScript : MonoBehaviour
     //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BoundHMD")) //
+        if (other.CompareTag("BoundHMD") && !isWindActive && !narrationHasPlayed) //
         {
-            Debug.Log("Entered Earth");
+            Debug.Log("Entered Air");
             TestAir.SetActive(true);
 
+            BoundEarth.SetActive(false);
+            BoundFire.SetActive(false);
+            BoundWater.SetActive(false);
+
+            narrationHasPlayed = true;
             //Play narration and remove other temp
             StartCoroutine(NarrationAndSignalCoroutine());
-            canActivateAir = true;
+            
         }
     }
 
-    /*public void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("BoundHMD")) //
         {
-
+            TestAir.SetActive(false);
         }
-    }*/
+    }
 
 
     IEnumerator NarrationAndSignalCoroutine()
     {
         audioSource.PlayOneShot(narrationClip);
         yield return new WaitForSeconds(narrationClip.length);
-        
+        canActivateAir = true;
     }
 
 
-
+    public void AttemptActivatedAirEffect()
+    {
+        if (!isWindActive && canActivateAir)
+        {
+            AdjustParticleSpeed();
+        }
+    }
 
 
 
     //Air effects
     public void AdjustParticleSpeed()
     {
-        if (!isWindActive && canActivateAir)
-        {
+        
             var masterMain = masterEmitter.main;
             masterMain.startLifetime = fasterLifetime; // Adjust master emitter lifetime
 
@@ -85,8 +99,7 @@ public class BoundAirScript : MonoBehaviour
             isWindActive = true;
 
             StartCoroutine(ResetParticleSpeed(5.0f)); // Assuming gesture lasts for * seconds
-        }
-
+        
     }
 
     IEnumerator ResetParticleSpeed(float delay)
@@ -115,8 +128,12 @@ public class BoundAirScript : MonoBehaviour
 
         moreSpirals.SetActive(false);
 
-        isWindActive = false;
-        canActivateAir = false;
+        BoundEarth.SetActive(true);
+        BoundFire.SetActive(true);
+        BoundWater.SetActive(true);
+
+        //isWindActive = false;
+        //canActivateAir = false;
 
     }
 

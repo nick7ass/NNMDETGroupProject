@@ -26,7 +26,14 @@ public class BoundWaterScript : MonoBehaviour
             TestWater.SetActive(true);
             //Play narration and remove other temp
         }
-        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("BoundHMD")) //
+        {
+            TestWater.SetActive(false);
+        }
     }
 
 }

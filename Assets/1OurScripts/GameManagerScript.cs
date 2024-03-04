@@ -22,7 +22,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     //Use Yield return to like not make it start instantly????
-    public void OnTriggerEnter(Collider other)
+    /*public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundEarth")) //
         {
@@ -48,5 +48,5 @@ public class GameManagerScript : MonoBehaviour
             TestAir.SetActive(true);
             //Play narration and remove otehr temp
         }
-    }
+    }*/
 }

@@ -29,4 +29,12 @@ public class BoundFireScript : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("BoundHMD")) //
+        {
+            TestFire.SetActive(false);
+        }
+    }
+
 }
