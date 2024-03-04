@@ -7,6 +7,11 @@ TagManager:
   - Fire
   - GroundTag
   - CampFireTag
+  - BoundAir
+  - BoundFire
+  - BoundWater
+  - BoundEarth
+  - BoundHMD
   layers:
   - Default
   - TransparentFX

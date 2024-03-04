@@ -38,6 +38,7 @@ Library: /Users/nicklasbourelius/Unity Learn /NNMDETGroupProject/Temp/BurstOutpu
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=Unity.XR.Oculus;
 --assembly-defines=UnityEngine;
+--assembly-defines=websocket-sharp;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/nicklasbourelius/Unity Learn /NNMDETGroupProject/Temp/Burst
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.18f1/PlaybackEngines/AndroidPlayer
@@ -85,6 +86,7 @@ Library: /Users/nicklasbourelius/Unity Learn /NNMDETGroupProject/Temp/BurstOutpu
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=Unity.XR.Oculus;
 --assembly-defines=UnityEngine;
+--assembly-defines=websocket-sharp;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/nicklasbourelius/Unity Learn /NNMDETGroupProject/Temp/Burst
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.18f1/PlaybackEngines/AndroidPlayer

@@ -20,7 +20,7 @@ public class ConnectUnityWithSensors : MonoBehaviour
     void Start()
     {
         ConnectWithESP32();
-        //StartCoroutine(NarrationAndSignalCoroutine());
+        
     }
 
     public void ConnectWithESP32()
@@ -47,15 +47,7 @@ public class ConnectUnityWithSensors : MonoBehaviour
         Debug.Log("Websocket state - " + ws.ReadyState);
     }
 
-    /*IEnumerator NarrationAndSignalCoroutine()
-    {
-        audioSource.PlayOneShot(narrationClip);
-        yield return new WaitForSeconds(narrationClip.length);
-        if (ws.IsAlive)
-        {
-            ws.Send("Need Force");
-        }
-    }*/
+    
 
     void Update()
     {
