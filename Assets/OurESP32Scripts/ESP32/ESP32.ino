@@ -9,13 +9,13 @@ using namespace websockets;
 WebsocketsServer server;
 WebsocketsClient client;
 int forceSensorValue = 0;
-const int forceSensorPin = 34; // Change to your actual force sensor pin
+// const int forceSensorPin = 34; // Change to your actual force sensor pin
 
 void setup() {
   Serial.begin(115200);
   
   // Initialize force sensor pin as input
-  pinMode(forceSensorPin, INPUT);
+  // pinMode(forceSensorPin, INPUT);
   
   // Connect to WiFi
   WiFi.begin(ssid, password);
@@ -62,13 +62,13 @@ if (server.poll()) {  //server.poll() checks if any client is waiting to connect
         if (msg.data().equalsIgnoreCase("Need Force")) {
           digitalWrite(11, HIGH);  //Notify user to use force sensor
           Serial.println("Reading value from Force Sensor...");
-          while (forceSensorValue <= 20) {
+          while (forceSensorValue <= 40) {
 
             analogReadResolution(10);  // This statement tells in how many bits the AnalogRead should happen.
             // analogRead function returns the integer 10 bit integer (0 to 1023)
             forceSensorValue = analogRead(A0);
 
-            if (forceSensorValue > 20) {
+            if (forceSensorValue > 40) {
               digitalWrite(13, HIGH);
               Serial.print(forceSensorValue, DEC);
               Serial.print("\n");  // Sending New Line character is important to read data in unity
@@ -89,4 +89,3 @@ if (server.poll()) {  //server.poll() checks if any client is waiting to connect
     client.close();
   }
 }
-

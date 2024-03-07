@@ -19186,6 +19186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   narrationHasFinished: 0
   seedHasAppeared: 0
+  narrationHasStarted: 0
   audioSource: {fileID: 171465764}
   narrationClip: {fileID: 8300000, guid: 09a27277c062f490ea6f7f06842f100f, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: 33724cce213214c3e8bba7e1c8b7f9de, type: 3}

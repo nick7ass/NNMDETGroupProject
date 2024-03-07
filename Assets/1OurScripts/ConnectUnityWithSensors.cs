@@ -64,7 +64,7 @@ public class ConnectUnityWithSensors : MonoBehaviour
 
             if (forceDataReceived)
             {
-                if (receivedForceValue > 40)
+                if (receivedForceValue > 900)
                 {
                     Debug.Log("Force threshold exceeded, action triggered.");
                     isForceDetected = true;
