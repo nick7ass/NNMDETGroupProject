@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using WebSocketSharp; // Ensure this matches the WebSocket library you're using
 
-public class ConnectUnityWithSensors : MonoBehaviour
+public class WaterConnectUnityWithSensors : MonoBehaviour
 {
     // Websocket Service
     WebSocket ws;
@@ -14,18 +14,18 @@ public class ConnectUnityWithSensors : MonoBehaviour
     public string esp32IPAddress = "10.204.0.249"; // Assign your ESP32 IP Address
     public string esp32WebsocketPort = "81"; // Assign your ESP32 WebSocket port, typically "81"
 
-    private bool forceDataReceived = false;
-    private int receivedForceValue = 0;
+    private bool distanceDataReceived = false;
+    private int receivedDistanceValue = 0;
 
-    public static bool isForceDetected = false;
+    public static bool isDistanceDetected = false;
 
-    public BoundEarthScript earthScript = new BoundEarthScript();
+    //Change to waterpublic BoundEarthScript earthScript = new BoundEarthScript();
 
     void Start()
     {
 
         ConnectWithESP32();
-        
+
     }
 
     public void ConnectWithESP32()
@@ -35,7 +35,7 @@ public class ConnectUnityWithSensors : MonoBehaviour
         ws.OnOpen += (sender, e) =>
         {
             Debug.Log("WebSocket connected");
-            ws.Send("Hello from Unity!");
+            ws.Send("Hello from Unity Water Script!");
         };
         ws.OnMessage += (sender, e) =>
         {
@@ -44,42 +44,42 @@ public class ConnectUnityWithSensors : MonoBehaviour
             bool isNumeric = int.TryParse(e.Data, out parsedValue);
             if (isNumeric)
             {
-                receivedForceValue = parsedValue;
-                forceDataReceived = true; // Indicate that new data has been received
+                receivedDistanceValue = parsedValue;
+                distanceDataReceived = true; // Indicate that new data has been received
             }
         };
         ws.Connect();
         Debug.Log("Websocket state - " + ws.ReadyState);
     }
 
-    
+
 
     void Update()
-    {
-        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared)
+    {//Change to Water script 
+        /*if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared)
         {
-            Debug.Log("Asking for force.");
+            Debug.Log("Asking for distance.");
 
-            ws.Send("Need Force");
+            ws.Send("Need Distance");
 
-            if (forceDataReceived)
+            if (distanceDataReceived)
             {
-                if (receivedForceValue > 900)
+                if (receivedDistanceValue > 900)
                 {
-                    Debug.Log("Force threshold exceeded, action triggered.");
-                    isForceDetected = true;
-                    earthScript.collectForce();
+                    Debug.Log("Distance threshold exceeded, action triggered.");
+                    isDistanceDetected = true;
+                    //earthScript.collectForce();
 
                 }
-                forceDataReceived = false; // Reset for the next message
-            }
+                distanceDataReceived = false; // Reset for the next message
+            }*/
         }
 
 
 
     }
 
-    void OnDestroy()
+ /*   void OnDestroy()
     {
         if (ws != null && ws.IsAlive)
         {
@@ -87,4 +87,5 @@ public class ConnectUnityWithSensors : MonoBehaviour
         }
     }
 
-}
+}*/
+
