@@ -56,7 +56,7 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
     void Update()
     {//Change to Water script 
-        if (waterScript.narrationHasFinished /*&& !waterScript.seedHasAppeared*/)
+        if (waterScript.narrationHasFinished && !waterScript.dropHasAppeared)
         {
             Debug.Log("Asking for distance.");
 
@@ -64,11 +64,11 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
             if (distanceDataReceived)
             {
-                if (receivedDistanceValue > 900)
+                if (receivedDistanceValue < 10)
                 {
                     Debug.Log("Distance threshold exceeded, action triggered.");
                     isDistanceDetected = true;
-                    //waterScript.methodNameDependingOnDistance();
+                    waterScript.collectDistance();
 
                 }
                 distanceDataReceived = false; // Reset for the next message
