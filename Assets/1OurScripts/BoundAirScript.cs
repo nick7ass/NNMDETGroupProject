@@ -17,6 +17,7 @@ public class BoundAirScript : MonoBehaviour
     public AudioClip narrationClip;
 
     public GameObject TestAir;
+    public GameObject WhirlObjectToCollect;
 
     public GameObject BoundFire;
     public GameObject BoundWater;
@@ -29,7 +30,7 @@ public class BoundAirScript : MonoBehaviour
 
     }
 
-    
+
 
     //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
@@ -46,7 +47,7 @@ public class BoundAirScript : MonoBehaviour
             narrationHasPlayed = true;
             //Play narration and remove other temp
             StartCoroutine(NarrationAndSignalCoroutine());
-            
+
         }
     }
 
@@ -80,26 +81,28 @@ public class BoundAirScript : MonoBehaviour
     //Air effects
     public void AdjustParticleSpeed()
     {
-        
-            var masterMain = masterEmitter.main;
-            masterMain.startLifetime = fasterLifetime; // Adjust master emitter lifetime
 
-            var slaveMain = slaveEmitter.main;
-            slaveMain.duration = fasterLifetime; // Adjust slave emitter duration to match
+        var masterMain = masterEmitter.main;
+        masterMain.startLifetime = fasterLifetime; // Adjust master emitter lifetime
 
-            // Restart the particle systems to apply the changes immediately
-            masterEmitter.Stop();
-            masterEmitter.Play();
+        var slaveMain = slaveEmitter.main;
+        slaveMain.duration = fasterLifetime; // Adjust slave emitter duration to match
 
-            slaveEmitter.Stop();
-            slaveEmitter.Play();
+        // Restart the particle systems to apply the changes immediately
+        masterEmitter.Stop();
+        masterEmitter.Play();
 
-            moreSpirals.SetActive(true);
+        slaveEmitter.Stop();
+        slaveEmitter.Play();
 
-            isWindActive = true;
+        moreSpirals.SetActive(true);
 
-            StartCoroutine(ResetParticleSpeed(5.0f)); // Assuming gesture lasts for * seconds
-        
+        isWindActive = true;
+
+        StartCoroutine(ResetParticleSpeed(5.0f)); // Assuming gesture lasts for * seconds
+
+        WhirlObjectToCollect.SetActive(true);
+
     }
 
     IEnumerator ResetParticleSpeed(float delay)

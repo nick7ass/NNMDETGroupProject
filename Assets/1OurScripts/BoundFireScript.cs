@@ -6,6 +6,7 @@ public class BoundFireScript : MonoBehaviour
 {
 
     public GameObject TestFire;
+   
 
     // Start is called before the first frame update
     void Start()

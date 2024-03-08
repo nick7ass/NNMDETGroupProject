@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class BoundWaterScript : MonoBehaviour
 {
+    public bool narrationHasFinished = false;
+    public bool dropHasAppeared = false;
+    public bool narrationHasStarted = false;
+
+    public AudioSource audioSource;
+    public AudioClip narrationClip;
+    public AudioClip narrationClipTwo;
+
+    public GameObject waterObjectToCollect;
 
     public GameObject TestWater;
+
+    
     // Start is called before the first frame update
     void Start()
     {

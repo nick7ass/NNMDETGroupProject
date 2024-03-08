@@ -12,7 +12,7 @@ public class BoundEarthScript : MonoBehaviour
     public AudioClip narrationClip;
     public AudioClip narrationClipTwo;
 
-    public GameObject seedObject;
+    public GameObject earthObjectToCollect;
 
     public GameObject TestEarth;
 
@@ -84,9 +84,13 @@ public class BoundEarthScript : MonoBehaviour
             // if (ConnectUnityWithSensors.isForceDetected) 
             // {
             //}
-            seedObject.SetActive(true);
+            earthObjectToCollect.SetActive(true);
             audioSource.PlayOneShot(narrationClipTwo);
             seedHasAppeared = true;
+
+            //Make these not go until narration has ended?
+            //Or make it so that these are not activated until the object has been collected
+            //Implement this for all of the different elements
             BoundAir.SetActive(true);
             BoundFire.SetActive(true);
             BoundWater.SetActive(true);

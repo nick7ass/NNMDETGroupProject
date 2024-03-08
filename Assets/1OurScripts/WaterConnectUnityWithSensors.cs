@@ -19,7 +19,7 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
     public static bool isDistanceDetected = false;
 
-    //Change to waterpublic BoundEarthScript earthScript = new BoundEarthScript();
+    public BoundWaterScript waterScript = new BoundWaterScript();
 
     void Start()
     {
@@ -56,7 +56,7 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
     void Update()
     {//Change to Water script 
-        /*if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared)
+        if (waterScript.narrationHasFinished /*&& !waterScript.seedHasAppeared*/)
         {
             Debug.Log("Asking for distance.");
 
@@ -68,18 +68,18 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
                 {
                     Debug.Log("Distance threshold exceeded, action triggered.");
                     isDistanceDetected = true;
-                    //earthScript.collectForce();
+                    //waterScript.methodNameDependingOnDistance();
 
                 }
                 distanceDataReceived = false; // Reset for the next message
-            }*/
+            }
         }
 
 
 
     }
 
- /*   void OnDestroy()
+    void OnDestroy()
     {
         if (ws != null && ws.IsAlive)
         {
@@ -87,5 +87,5 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
         }
     }
 
-}*/
+}
 
