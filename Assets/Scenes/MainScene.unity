@@ -12551,6 +12551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979159585}
   - component: {fileID: 979159586}
+  - component: {fileID: 979159587}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12580,7 +12581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979159584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ecd28734b48f4313bff134f6df55396, type: 3}
   m_Name: 
@@ -12588,6 +12589,21 @@ MonoBehaviour:
   esp32IPAddress: 10.204.0.249
   esp32WebsocketPort: 81
   earthScript: {fileID: 1596973211}
+--- !u!114 &979159587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979159584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d772bb92ee174a46b45955222620b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esp32IPAddress: 10.204.0.249
+  esp32WebsocketPort: 81
+  waterScript: {fileID: 1726060523}
 --- !u!1001 &980743549
 PrefabInstance:
   m_ObjectHideFlags: 0
