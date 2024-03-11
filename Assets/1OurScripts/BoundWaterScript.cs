@@ -14,9 +14,11 @@ public class BoundWaterScript : MonoBehaviour
 
     public GameObject waterObjectToCollect;
 
+    private bool objectHasBeenCollected = false;
+
 
     //Boundary control
-    private BoundaryControlScript boundControl;
+    public BoundaryControlScript boundControl;
 
 
     //Use Yield return to like not make it start instantly????
@@ -28,7 +30,7 @@ public class BoundWaterScript : MonoBehaviour
             //TestWater.SetActive(true);
 
             //Removing other bounds temporarily
-            boundControl.tempRemoveBoundary("Water");
+            boundControl.TempRemoveBoundary("Water");
 
             //Play narration
             StartCoroutine(NarrationAndSignalCoroutine());
@@ -54,7 +56,6 @@ public class BoundWaterScript : MonoBehaviour
             waterObjectToCollect.SetActive(true);
             audioSource.PlayOneShot(narrationClipTwo);
             dropHasAppeared = true;
-            stationCompleted();
         }
     }
 
@@ -65,15 +66,13 @@ public class BoundWaterScript : MonoBehaviour
     public void stationCompleted()
     {
         StartCoroutine(RemoveCollectedItem());
-        boundControl.removeBoundary("Water");
-        boundControl.reactivateBoundary("Water");
-        //Insert functionality for starting counter narration etc
+        waterObjectToCollect.SetActive(false);
+        boundControl.ReactivateBoundary();
+        boundControl.RemoveBoundary("Water");
     }
 
     IEnumerator RemoveCollectedItem()
     {
         yield return new WaitForSeconds(2.0f);
-        waterObjectToCollect.SetActive(false);
     }
-
 }

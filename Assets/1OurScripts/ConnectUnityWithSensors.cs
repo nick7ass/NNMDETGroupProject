@@ -11,7 +11,7 @@ public class ConnectUnityWithSensors : MonoBehaviour
     //public AudioSource audioSource; // Assign in inspector
     //public AudioClip narrationClip; // Assign in inspector
     //
-    public string esp32IPAddress = "10.204.0.249"; // Assign your ESP32 IP Address
+    public string esp32IPAddress = "10.204.0.248"; // Assign your ESP32 IP Address
     public string esp32WebsocketPort = "81"; // Assign your ESP32 WebSocket port, typically "81"
 
     private bool forceDataReceived = false;

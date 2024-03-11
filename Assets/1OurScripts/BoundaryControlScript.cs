@@ -14,13 +14,18 @@ public class BoundaryControlScript : MonoBehaviour
     private bool waterFinished = false;
     private bool fireFinished = false;
 
+    private bool airHasBeenCollected = false;
+    private bool earthHasBeenCollected = false;
+    private bool waterHasBeenCollected = false;
+    private bool fireHasBeenCollected = false;
+
     private int collectionCounter = 0;
 
     // Add references for the AudioSource and narration clips
     public AudioSource narrationSource;
     public AudioClip[] narrationClips; // Ensure this array is populated in the Inspector with your narration clips
 
-    public void tempRemoveBoundary(string bound)
+    public void TempRemoveBoundary(string bound)
     {
         if (bound == "Air")
         {
@@ -48,7 +53,7 @@ public class BoundaryControlScript : MonoBehaviour
         }
     }
 
-    public void reactivateBoundary(string bound)
+    public void ReactivateBoundary()
     {
         if (!airFinished)
         {
@@ -71,34 +76,38 @@ public class BoundaryControlScript : MonoBehaviour
         }
     }
 
-    public void removeBoundary(string bound)
+    public void RemoveBoundary(string bound)
     {
-        if (bound == "Air")
+        if (bound == "Air" && !airHasBeenCollected)
         {
             airFinished = true;
             collectionCounter++;
             PlayCollectionNarration();
+            airHasBeenCollected = true;
             airBoundary.SetActive(false);
         }
-        else if (bound == "Earth")
+        else if (bound == "Earth" && !earthHasBeenCollected)
         {
             earthFinished = true;
             collectionCounter++;
             PlayCollectionNarration();
+            earthHasBeenCollected = true;
             earthBoundary.SetActive(false);
         }
-        else if (bound == "Water")
+        else if (bound == "Water" && !waterHasBeenCollected)
         {
             waterFinished = true;
             collectionCounter++;
             PlayCollectionNarration();
+            waterHasBeenCollected = true;
             waterBoundary.SetActive(false);
         }
-        else if (bound == "Fire")
+        else if (bound == "Fire" && !fireHasBeenCollected)
         {
             fireFinished = true;
             collectionCounter++;
             PlayCollectionNarration();
+            fireHasBeenCollected = true;
             fireBoundary.SetActive(false);
         }
     }
@@ -106,6 +115,7 @@ public class BoundaryControlScript : MonoBehaviour
     {
         if (collectionCounter > 0 && collectionCounter <= narrationClips.Length)
         {
+            narrationSource.Stop();
             narrationSource.clip = narrationClips[collectionCounter - 1];
             narrationSource.Play();
         }

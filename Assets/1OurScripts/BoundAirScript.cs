@@ -14,15 +14,20 @@ public class BoundAirScript : MonoBehaviour
     public bool canActivateAir = false;
 
     public bool narrationHasPlayed = false;
+
+    private bool secondNarrationHasPlayed = false;
+
     public AudioSource audioSource;
     public AudioClip narrationClip;
     public AudioClip narrationClipTwo;
 
     public GameObject windObjectToCollect;
 
+    private bool objectHasBeenCollected = false;
+
 
     //Boundary control
-    private BoundaryControlScript boundControl;
+    public BoundaryControlScript boundControl;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +41,7 @@ public class BoundAirScript : MonoBehaviour
     {
         if (other.CompareTag("BoundHMD") && !isWindActive && !narrationHasPlayed) //
         {
-            boundControl.tempRemoveBoundary("Air");
+            boundControl.TempRemoveBoundary("Air");
 
             narrationHasPlayed = true;
             //Play narration
@@ -87,9 +92,21 @@ public class BoundAirScript : MonoBehaviour
         StartCoroutine(ResetParticleSpeed(5.0f)); // Assuming gesture lasts for * seconds
 
         //Insert second narration here
+
         windObjectToCollect.SetActive(true);
+        audioSource.PlayOneShot(narrationClipTwo);
+
+
+        //StartCoroutine(SecondNarration());
+
 
     }
+
+    /*IEnumerator SecondNarration()
+    {
+        yield return new WaitForSeconds(narrationClipTwo.length);
+
+    }*/
 
     IEnumerator ResetParticleSpeed(float delay)
     {
@@ -127,15 +144,14 @@ public class BoundAirScript : MonoBehaviour
     public void stationCompleted()
     {
         StartCoroutine(RemoveCollectedItem());
-        boundControl.removeBoundary("Fire");
-        boundControl.reactivateBoundary("Fire");
-        //Insert functionality for starting counter narration etc
+        windObjectToCollect.SetActive(false);
+        boundControl.ReactivateBoundary();
+        boundControl.RemoveBoundary("Air");
     }
 
     IEnumerator RemoveCollectedItem()
     {
         yield return new WaitForSeconds(2.0f);
-        windObjectToCollect.SetActive(false);
     }
 
 }

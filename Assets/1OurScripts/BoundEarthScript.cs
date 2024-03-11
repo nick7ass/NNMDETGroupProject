@@ -15,9 +15,11 @@ public class BoundEarthScript : MonoBehaviour
 
     public GameObject earthObjectToCollect;
 
+    private bool objectHasBeenCollected = false;
+
 
     //Boundary control
-    private BoundaryControlScript boundControl;
+    public BoundaryControlScript boundControl;
 
     //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
@@ -27,7 +29,7 @@ public class BoundEarthScript : MonoBehaviour
         {
 
             //Removing other bounds temporarily
-            boundControl.tempRemoveBoundary("Earth");
+            boundControl.TempRemoveBoundary("Earth");
 
             //Play narration
             StartCoroutine(NarrationAndSignalCoroutine());
@@ -64,16 +66,14 @@ public class BoundEarthScript : MonoBehaviour
     public void stationCompleted()
     {
         StartCoroutine(RemoveCollectedItem());
-        boundControl.removeBoundary("Earth");
-        boundControl.reactivateBoundary("Earth");
-        //Insert functionality for starting counter narration etc
+        earthObjectToCollect.SetActive(false);
+        boundControl.ReactivateBoundary();
+        boundControl.RemoveBoundary("Earth");
     }
 
     IEnumerator RemoveCollectedItem()
     {
         yield return new WaitForSeconds(2.0f);
-        earthObjectToCollect.SetActive(false);
     }
-
 
 }

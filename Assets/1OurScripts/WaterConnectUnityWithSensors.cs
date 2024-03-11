@@ -75,6 +75,10 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
             }
         }
 
+        //Failsafe in case something goes wrong (Get key down to make it so if the sensor
+        //doesnt work or is giving issues we can control it somehow (but how if we use apk lol????)
+       
+
 
 
     }
