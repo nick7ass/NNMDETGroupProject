@@ -9,19 +9,20 @@ public class BoundAirScript : MonoBehaviour
     public GameObject moreSpirals;
     private float defaultLifetime = 0.5f; // Default start lifetime, adjust as needed
     public float fasterLifetime = 2.0f; // Example faster lifetime, adjust as needed
+
     public bool isWindActive = false;
     public bool canActivateAir = false;
 
     public bool narrationHasPlayed = false;
     public AudioSource audioSource;
     public AudioClip narrationClip;
+    public AudioClip narrationClipTwo;
 
-    public GameObject TestAir;
-    public GameObject WhirlObjectToCollect;
+    public GameObject windObjectToCollect;
 
-    public GameObject BoundFire;
-    public GameObject BoundWater;
-    public GameObject BoundEarth;
+
+    //Boundary control
+    private BoundaryControlScript boundControl;
 
     // Start is called before the first frame update
     void Start()
@@ -30,32 +31,17 @@ public class BoundAirScript : MonoBehaviour
 
     }
 
-
-
-    //Use Yield return to like not make it start instantly????
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundHMD") && !isWindActive && !narrationHasPlayed) //
         {
-            Debug.Log("Entered Air");
-            TestAir.SetActive(true);
-
-            BoundEarth.SetActive(false);
-            BoundFire.SetActive(false);
-            BoundWater.SetActive(false);
+            boundControl.tempRemoveBoundary("Air");
 
             narrationHasPlayed = true;
-            //Play narration and remove other temp
+            //Play narration
             StartCoroutine(NarrationAndSignalCoroutine());
 
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("BoundHMD")) //
-        {
-            TestAir.SetActive(false);
         }
     }
 
@@ -81,7 +67,6 @@ public class BoundAirScript : MonoBehaviour
     //Air effects
     public void AdjustParticleSpeed()
     {
-
         var masterMain = masterEmitter.main;
         masterMain.startLifetime = fasterLifetime; // Adjust master emitter lifetime
 
@@ -101,7 +86,8 @@ public class BoundAirScript : MonoBehaviour
 
         StartCoroutine(ResetParticleSpeed(5.0f)); // Assuming gesture lasts for * seconds
 
-        WhirlObjectToCollect.SetActive(true);
+        //Insert second narration here
+        windObjectToCollect.SetActive(true);
 
     }
 
@@ -117,10 +103,10 @@ public class BoundAirScript : MonoBehaviour
     public void AdjustParticleSpeedReset()
     {
         var masterMain = masterEmitter.main;
-        masterMain.startLifetime = defaultLifetime; // Adjust master emitter lifetime
+        masterMain.startLifetime = defaultLifetime; 
 
         var slaveMain = slaveEmitter.main;
-        slaveMain.duration = defaultLifetime; // Adjust slave emitter duration to match
+        slaveMain.duration = defaultLifetime; 
 
         // Restart the particle systems to apply the changes immediately
         masterEmitter.Stop();
@@ -131,13 +117,25 @@ public class BoundAirScript : MonoBehaviour
 
         moreSpirals.SetActive(false);
 
-        BoundEarth.SetActive(true);
-        BoundFire.SetActive(true);
-        BoundWater.SetActive(true);
-
         //isWindActive = false;
         //canActivateAir = false;
 
+    }
+
+    //Method to remove the boundary when station has been completed.
+    //Start through Unity event wrapper for when item to collect is selected.
+    public void stationCompleted()
+    {
+        StartCoroutine(RemoveCollectedItem());
+        boundControl.removeBoundary("Fire");
+        boundControl.reactivateBoundary("Fire");
+        //Insert functionality for starting counter narration etc
+    }
+
+    IEnumerator RemoveCollectedItem()
+    {
+        yield return new WaitForSeconds(2.0f);
+        windObjectToCollect.SetActive(false);
     }
 
 }

@@ -9,9 +9,11 @@ public class FireCollisionAudioScript : MonoBehaviour
     public AudioSource audioPlayerGround;
     public GameObject fireBigger;
     public GameObject fireEvenBigger;
+
+    private BoundFireScript boundFireScript;
+
     private bool isFireBigger = false;
 
-    public GameObject fireObjectToCollect;
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -19,14 +21,14 @@ public class FireCollisionAudioScript : MonoBehaviour
         {
             audioPlayerGround.Play();
         }
-        else if (collision.gameObject.tag == "CampFireTag") {
+        else if (collision.gameObject.tag == "CampFireTag" && !isFireBigger) {
             audioPlayerFire.Play();
             fireBigger.SetActive(true);
             isFireBigger = true;
-            fireObjectToCollect.SetActive(true);
-        } else if (collision.gameObject.tag == "CampFireTag" && isFireBigger)
+            boundFireScript.fireObjectToCollect.SetActive(true);
+        } /*else if (collision.gameObject.tag == "CampFireTag" && isFireBigger)
         {
             fireEvenBigger.SetActive(true);
-        }
+        }*/
     }
 }

@@ -14,36 +14,23 @@ public class BoundWaterScript : MonoBehaviour
 
     public GameObject waterObjectToCollect;
 
-    public GameObject TestWater;
 
-    public GameObject BoundFire;
-    public GameObject BoundEarth;
-    public GameObject BoundAir;
+    //Boundary control
+    private BoundaryControlScript boundControl;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundHMD") && !narrationHasFinished && !narrationHasStarted) //
         {
             Debug.Log("Entered Water");
-            TestWater.SetActive(true);
-            //Play narration and remove other temp
+            //TestWater.SetActive(true);
 
-            BoundAir.SetActive(false);
-            BoundFire.SetActive(false);
-            BoundEarth.SetActive(false);
+            //Removing other bounds temporarily
+            boundControl.tempRemoveBoundary("Water");
 
+            //Play narration
             StartCoroutine(NarrationAndSignalCoroutine());
 
         }
@@ -64,29 +51,29 @@ public class BoundWaterScript : MonoBehaviour
     {
         if (narrationHasFinished && !dropHasAppeared)
         {
-            //Force sensor
-            // if (ConnectUnityWithSensors.isForceDetected) 
-            // {
-            //}
             waterObjectToCollect.SetActive(true);
             audioSource.PlayOneShot(narrationClipTwo);
             dropHasAppeared = true;
-
-            //Make these not go until narration has ended?
-            //Or make it so that these are not activated until the object has been collected
-            //Implement this for all of the different elements
-            BoundAir.SetActive(true);
-            BoundFire.SetActive(true);
-            BoundEarth.SetActive(true);
+            stationCompleted();
         }
     }
 
-    public void OnTriggerExit(Collider other)
+
+    //Method to remove the boundary when station has been completed.
+    //Start through Unity event wrapper for when item to collect is selected.
+
+    public void stationCompleted()
     {
-        if (other.CompareTag("BoundHMD")) //
-        {
-            TestWater.SetActive(false);
-        }
+        StartCoroutine(RemoveCollectedItem());
+        boundControl.removeBoundary("Water");
+        boundControl.reactivateBoundary("Water");
+        //Insert functionality for starting counter narration etc
+    }
+
+    IEnumerator RemoveCollectedItem()
+    {
+        yield return new WaitForSeconds(2.0f);
+        waterObjectToCollect.SetActive(false);
     }
 
 }

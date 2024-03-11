@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BoundEarthScript : MonoBehaviour
 {
-    public bool narrationHasFinished = false;
     public bool seedHasAppeared = false;
+
+    public bool narrationHasFinished = false;
     public bool narrationHasStarted = false;
 
     public AudioSource audioSource;
@@ -14,55 +15,22 @@ public class BoundEarthScript : MonoBehaviour
 
     public GameObject earthObjectToCollect;
 
-    public GameObject TestEarth;
 
-    public GameObject BoundFire;
-    public GameObject BoundWater;
-    public GameObject BoundAir;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //Boundary control
+    private BoundaryControlScript boundControl;
 
     //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered Earth");
-        TestEarth.SetActive(true);
-
-
+        
         if (other.CompareTag("BoundHMD") && !narrationHasFinished && !narrationHasStarted) //
         {
-            Debug.Log("Earth entered");
 
+            //Removing other bounds temporarily
+            boundControl.tempRemoveBoundary("Earth");
 
-            //Play narration and remove other temp
-            
-
-            BoundAir.SetActive(false);
-            BoundFire.SetActive(false);
-            BoundWater.SetActive(false);
-
+            //Play narration
             StartCoroutine(NarrationAndSignalCoroutine());
-
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("BoundHMD")) //
-        {
-            TestEarth.SetActive(false);
         }
     }
 
@@ -88,15 +56,24 @@ public class BoundEarthScript : MonoBehaviour
             audioSource.PlayOneShot(narrationClipTwo);
             seedHasAppeared = true;
 
-            //Make these not go until narration has ended?
-            //Or make it so that these are not activated until the object has been collected
-            //Implement this for all of the different elements
-            BoundAir.SetActive(true);
-            BoundFire.SetActive(true);
-            BoundWater.SetActive(true);
         }
     }
 
-   
+    //Method to remove the boundary when station has been completed.
+    //Start through Unity event wrapper for when item to collect is selected.
+    public void stationCompleted()
+    {
+        StartCoroutine(RemoveCollectedItem());
+        boundControl.removeBoundary("Earth");
+        boundControl.reactivateBoundary("Earth");
+        //Insert functionality for starting counter narration etc
+    }
+
+    IEnumerator RemoveCollectedItem()
+    {
+        yield return new WaitForSeconds(2.0f);
+        earthObjectToCollect.SetActive(false);
+    }
+
 
 }
