@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoundFireScript : MonoBehaviour
 {
+
     public bool narrationHasFinished = false;
     public bool narrationHasStarted = false;
 

@@ -6,6 +6,7 @@ public class BoundAirScript : MonoBehaviour
 {
     public ParticleSystem masterEmitter; // Assign in the inspector
     public ParticleSystem slaveEmitter; // Assign in the inspector
+
     public GameObject moreSpirals;
     private float defaultLifetime = 0.5f; // Default start lifetime, adjust as needed
     public float fasterLifetime = 2.0f; // Example faster lifetime, adjust as needed
