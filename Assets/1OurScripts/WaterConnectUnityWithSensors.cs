@@ -14,10 +14,10 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
     public string esp32IPAddress = "10.204.0.249"; // Assign your ESP32 IP Address
     public string esp32WebsocketPort = "81"; // Assign your ESP32 WebSocket port, typically "81"
 
-    private bool distanceDataReceived = false;
-    private int receivedDistanceValue = 0;
+    private bool touchDataReceived = false;
+    private int receivedTouchValue = 0;
 
-    public static bool isDistanceDetected = false;
+    public static bool isTouchDetected = false;
 
     public BoundWaterScript waterScript = new BoundWaterScript();
 
@@ -44,8 +44,8 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
             bool isNumeric = int.TryParse(e.Data, out parsedValue);
             if (isNumeric)
             {
-                receivedDistanceValue = parsedValue;
-                distanceDataReceived = true; // Indicate that new data has been received
+                receivedTouchValue = parsedValue;
+                touchDataReceived = true; // Indicate that new data has been received
             }
         };
         ws.Connect();
@@ -58,20 +58,20 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
     {//Change to Water script 
         if (waterScript.narrationHasFinished && !waterScript.dropHasAppeared)
         {
-            Debug.Log("Asking for distance.");
+            Debug.Log("Asking for touch.");
 
-            ws.Send("Need Distance");
+            ws.Send("Need Touch");
 
-            if (distanceDataReceived)
+            if (touchDataReceived)
             {
-                if (receivedDistanceValue < 10)
+                if (receivedTouchValue == 10)
                 {
                     Debug.Log("Distance threshold exceeded, action triggered.");
-                    isDistanceDetected = true;
-                    waterScript.collectDistance();
+                    isTouchDetected = true;
+                    waterScript.collectTouch();
 
                 }
-                distanceDataReceived = false; // Reset for the next message
+                touchDataReceived = false; // Reset for the next message
             }
         }
 

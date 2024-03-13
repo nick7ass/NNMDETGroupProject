@@ -49,13 +49,14 @@ public class BoundWaterScript : MonoBehaviour
 
     }
 
-    public void collectDistance()
+    public void collectTouch()
     {
         if (narrationHasFinished && !dropHasAppeared)
         {
+            dropHasAppeared = true;
             waterObjectToCollect.SetActive(true);
             audioSource.PlayOneShot(narrationClipTwo);
-            dropHasAppeared = true;
+            
         }
     }
 
