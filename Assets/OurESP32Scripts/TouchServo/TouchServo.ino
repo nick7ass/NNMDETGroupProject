@@ -15,6 +15,7 @@ WebsocketsClient client;
 
 bool touchDetected = false;  // Flag to track touch detection
 bool touchHandled = false;   // Flag to track if touch has been handled
+bool messageHasBeenSent = false;
 
 int touchValue;
 
@@ -52,21 +53,21 @@ void loop() {
       if (msg.data().equalsIgnoreCase("Need Touch")) {
         Serial.println("Reading value from touch sensor!");
         //touchValue = touchRead(4);
-        Serial.println(touchRead(4));
+        //Serial.println(touchRead(4));
 
-        while (touchRead(4) < 14000) {
-          if (touchRead(4) >= 14000) {
+        while (touchRead(4) < 40000) {
+          if (touchRead(4) >= 40000) {
             Serial.println("Value above threshold");
 
             rotateServo();
 
-            client.send(String(touchRead(4)));
+            client.send(String(40000));
 
             break;
           }
         }
       }
-      
+      delay(500);
     }
     client.close();
   }
@@ -76,8 +77,14 @@ void loop() {
 
 void rotateServo() {
   // Rotate the servo motor 180 degrees
-  for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
-    servo1.write(posDegrees);
-    delay(10);  // Adjust the delay for smooth rotation
-  }
+  
+    for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
+      servo1.write(posDegrees);
+      delay(10);  // Adjust the delay for smooth rotation
+    }
+
+    for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+        servo1.write(posDegrees);
+        delay(10);
+    }
 }
