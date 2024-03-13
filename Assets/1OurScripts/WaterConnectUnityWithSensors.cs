@@ -19,6 +19,9 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
     public static bool isTouchDetected = false;
 
+    int threshhold = 14000;
+    
+
     public BoundWaterScript waterScript = new BoundWaterScript();
 
     void Start()
@@ -64,9 +67,9 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
 
             if (touchDataReceived)
             {
-                if (receivedTouchValue == 10)
+                if (receivedTouchValue >= threshhold)
                 {
-                    Debug.Log("Distance threshold exceeded, action triggered.");
+                    Debug.Log("Touch threshold exceeded, action triggered.");
                     isTouchDetected = true;
                     waterScript.collectTouch();
 

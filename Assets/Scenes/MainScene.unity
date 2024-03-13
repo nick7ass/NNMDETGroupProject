@@ -4672,18 +4672,6 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1293977771}
-        m_TargetAssemblyTypeName: Oculus.Interaction.AudioTrigger, Oculus.Interaction.OVR.Samples
-        m_MethodName: PlayAudio
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1726060523}
         m_TargetAssemblyTypeName: BoundWaterScript, Assembly-CSharp
         m_MethodName: stationCompleted
@@ -9512,7 +9500,7 @@ MonoBehaviour:
   canActivateAir: 0
   narrationHasPlayed: 0
   audioSource: {fileID: 171465764}
-  narrationClip: {fileID: 8300000, guid: 687001dfd7eb24ccca4eb0e4db510dca, type: 3}
+  narrationClip: {fileID: 8300000, guid: 00628ee3ba7b9f0458535254ad137558, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: 8cb9b31b6571647878893398d64e6f19, type: 3}
   windObjectToCollect: {fileID: 140392492}
   boundControl: {fileID: 979159588}
@@ -10395,7 +10383,7 @@ MonoBehaviour:
   narrationHasFinished: 0
   narrationHasStarted: 0
   audioSource: {fileID: 171465764}
-  narrationClip: {fileID: 8300000, guid: 1eac976b1660e489a87b946acaf94b72, type: 3}
+  narrationClip: {fileID: 8300000, guid: bc06e403323bf5a4ca12eef6b12390dd, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: deff384217dfb4266aa229b913f8fd03, type: 3}
   fireObjectToCollect: {fileID: 282901708}
   boundControl: {fileID: 979159588}
@@ -14125,7 +14113,7 @@ Transform:
   m_GameObject: {fileID: 979159584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31786,7 +31774,7 @@ MonoBehaviour:
   narrationHasFinished: 0
   narrationHasStarted: 0
   audioSource: {fileID: 171465764}
-  narrationClip: {fileID: 8300000, guid: 94cf8154f1b9943aba707d774a2821c7, type: 3}
+  narrationClip: {fileID: 8300000, guid: 1be9373128f41584db11cc06df6eb340, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: d6a09c727429f41e1808479b9f8fd7a4, type: 3}
   earthObjectToCollect: {fileID: 31480962}
   boundControl: {fileID: 979159588}
@@ -33925,7 +33913,7 @@ MonoBehaviour:
   dropHasAppeared: 0
   narrationHasStarted: 0
   audioSource: {fileID: 171465764}
-  narrationClip: {fileID: 8300000, guid: 08211c0f27d2740228ddd729a21f516f, type: 3}
+  narrationClip: {fileID: 8300000, guid: edcbc9fe06a7c054c8bc791420ddf5dc, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: 86108e3698a924d59860ac92e3cc414a, type: 3}
   waterObjectToCollect: {fileID: 297646202}
   boundControl: {fileID: 979159588}
@@ -40046,11 +40034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461792, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5883074
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 461792, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.94
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 461792, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40095,6 +40083,14 @@ PrefabInstance:
     - target: {fileID: 470880, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 470880, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 470880, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 470880, guid: b5ea624fac4bcb44f96ad51d3745727e, type: 3}
       propertyPath: m_ConstrainProportionsScale
