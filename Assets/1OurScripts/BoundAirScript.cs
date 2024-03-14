@@ -146,7 +146,7 @@ public class BoundAirScript : MonoBehaviour
     {
         StartCoroutine(RemoveCollectedItem());
         windObjectToCollect.SetActive(false);
-        boundControl.ReactivateBoundary();
+        //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Air");
     }
 

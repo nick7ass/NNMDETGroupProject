@@ -68,7 +68,7 @@ public class BoundWaterScript : MonoBehaviour
     {
         StartCoroutine(RemoveCollectedItem());
         waterObjectToCollect.SetActive(false);
-        boundControl.ReactivateBoundary();
+        //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Water");
     }
 

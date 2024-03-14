@@ -55,10 +55,10 @@ void loop() {
         //touchValue = touchRead(4);
 
 
-        while (touchRead(4) < 30000) {
+        while (touchRead(4) < 36000) {
           Serial.println(touchRead(4));
           delay(400);
-          if (touchRead(4) >= 30000) {
+          if (touchRead(4) >= 36000) {
             Serial.println("Value above threshold");
 
             rotateServo();
@@ -82,7 +82,7 @@ void rotateServo() {
 
   for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
     servo1.write(posDegrees);
-    delay(5);  // Adjust the delay for smooth rotation
+    delay(10);  // Adjust the delay for smooth rotation
   }
 
   for (int posDegrees = 180; posDegrees >= 0; posDegrees--) {

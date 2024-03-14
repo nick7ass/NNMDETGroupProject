@@ -83,7 +83,8 @@ public class BoundaryControlScript : MonoBehaviour
         {
             airFinished = true;
             collectionCounter++;
-            PlayCollectionNarration();
+            //PlayCollectionNarration();
+            StartCoroutine(PlayCollectionNarration());
             airHasBeenCollected = true;
             airBoundary.SetActive(false);
         }
@@ -91,7 +92,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             earthFinished = true;
             collectionCounter++;
-            PlayCollectionNarration();
+            //PlayCollectionNarration();
+            StartCoroutine(PlayCollectionNarration());
+
             earthHasBeenCollected = true;
             earthBoundary.SetActive(false);
         }
@@ -99,7 +102,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             waterFinished = true;
             collectionCounter++;
-            PlayCollectionNarration();
+            //PlayCollectionNarration();
+            StartCoroutine(PlayCollectionNarration());
+
             waterHasBeenCollected = true;
             waterBoundary.SetActive(false);
         }
@@ -107,19 +112,24 @@ public class BoundaryControlScript : MonoBehaviour
         {
             fireFinished = true;
             collectionCounter++;
-            PlayCollectionNarration();
+            //PlayCollectionNarration();
+            StartCoroutine(PlayCollectionNarration());
+
             fireHasBeenCollected = true;
             fireBoundary.SetActive(false);
         }
     }
-    private void PlayCollectionNarration()
+    IEnumerator PlayCollectionNarration()
     {
         if (collectionCounter > 0 && collectionCounter <= narrationClips.Length)
         {
             narrationSource.Stop();
             narrationSource.clip = narrationClips[collectionCounter - 1];
             narrationSource.Play();
+            yield return new WaitForSeconds(narrationClips[collectionCounter - 1].length);
+            ReactivateBoundary();
         }
+
     }
 
     //ADD functionality for detecting when all elements have been collected (eg when collectionCounter

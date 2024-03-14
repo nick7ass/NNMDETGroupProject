@@ -67,7 +67,7 @@ public class BoundEarthScript : MonoBehaviour
     {
         StartCoroutine(RemoveCollectedItem());
         earthObjectToCollect.SetActive(false);
-        boundControl.ReactivateBoundary();
+        //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Earth");
     }
 

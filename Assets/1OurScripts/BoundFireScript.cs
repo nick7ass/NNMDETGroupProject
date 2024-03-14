@@ -51,7 +51,7 @@ public class BoundFireScript : MonoBehaviour
     public void CollectFireObject()
     {
         StartCoroutine(SecondNarrationAndObject());
-        audioSource.PlayOneShot(narrationClipTwo);
+        //audioSource.PlayOneShot(narrationClipTwo);
         fireObjectToCollect.SetActive(true);
 
     }
@@ -74,7 +74,7 @@ public class BoundFireScript : MonoBehaviour
     {
         StartCoroutine(RemoveCollectedItem());
         fireObjectToCollect.SetActive(false);
-        boundControl.ReactivateBoundary();
+        //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Fire");
     }
 
