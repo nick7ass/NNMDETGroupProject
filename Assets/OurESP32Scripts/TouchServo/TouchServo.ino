@@ -55,13 +55,14 @@ void loop() {
         //touchValue = touchRead(4);
         //Serial.println(touchRead(4));
 
-        while (touchRead(4) < 40000) {
-          if (touchRead(4) >= 40000) {
+        while (touchRead(4) < 30000) {
+          if (touchRead(4) >= 30000) {
             Serial.println("Value above threshold");
+            Serial.println(touchRead(4));
 
             rotateServo();
 
-            client.send(String(40000));
+            client.send(String(30000));
 
             break;
           }

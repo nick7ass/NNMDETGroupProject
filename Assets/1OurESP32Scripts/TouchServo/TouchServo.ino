@@ -53,10 +53,12 @@ void loop() {
       if (msg.data().equalsIgnoreCase("Need Touch")) {
         Serial.println("Reading value from touch sensor!");
         //touchValue = touchRead(4);
-        //Serial.println(touchRead(4));
 
-        while (touchRead(4) < 40000) {
-          if (touchRead(4) >= 40000) {
+
+        while (touchRead(4) < 30000) {
+          Serial.println(touchRead(4));
+          delay(400);
+          if (touchRead(4) >= 30000) {
             Serial.println("Value above threshold");
 
             rotateServo();
@@ -67,7 +69,7 @@ void loop() {
           }
         }
       }
-      delay(500);
+      //delay(500);
     }
     client.close();
   }
@@ -77,14 +79,14 @@ void loop() {
 
 void rotateServo() {
   // Rotate the servo motor 180 degrees
-  
-    for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
-      servo1.write(posDegrees);
-      delay(10);  // Adjust the delay for smooth rotation
-    }
 
-    for(int posDegrees = 180; posDegrees >= 0; posDegrees--) {
-        servo1.write(posDegrees);
-        delay(10);
-    }
+  for (int posDegrees = 0; posDegrees <= 180; posDegrees++) {
+    servo1.write(posDegrees);
+    delay(5);  // Adjust the delay for smooth rotation
+  }
+
+  for (int posDegrees = 180; posDegrees >= 0; posDegrees--) {
+    servo1.write(posDegrees);
+    delay(10);
+  }
 }

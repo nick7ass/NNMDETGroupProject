@@ -12,6 +12,7 @@ public class BoundFireScript : MonoBehaviour
     public AudioClip narrationClip;
     public AudioClip narrationClipTwo;
 
+    public GameObject fireObjectToThrow;
     public GameObject fireObjectToCollect;
 
     private bool objectHasBeenCollected = false;
@@ -42,7 +43,7 @@ public class BoundFireScript : MonoBehaviour
         audioSource.PlayOneShot(narrationClip);
 
         yield return new WaitForSeconds(narrationClip.length);
-
+        fireObjectToThrow.SetActive(true);
         narrationHasFinished = true;
 
     }
