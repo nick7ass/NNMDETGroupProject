@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class BoundaryControlScript : MonoBehaviour
 {
+    //Boundries
     public GameObject airBoundary;
     public GameObject earthBoundary;
     public GameObject waterBoundary;
     public GameObject fireBoundary;
+
+    //Instruction UI's
+    public GameObject airInstructionUI;
+    public GameObject earthInstructionUI;
+    public GameObject waterInstructionUI;
+    public GameObject fireInstructionUI;
+
+    //Collection images
+    public GameObject airNotCollectedImage;
+    public GameObject airCollectedImage;
+    public GameObject earthNotCollectedImage;
+    public GameObject earthCollectedImage;
+    public GameObject waterNotCollectedImage;
+    public GameObject waterCollectedImage;
+    public GameObject fireNotCollectedImage;
+    public GameObject fireCollectedImage;
 
     private bool airFinished = false;
     private bool earthFinished = false;
@@ -30,24 +47,29 @@ public class BoundaryControlScript : MonoBehaviour
     {
         if (bound == "Air")
         {
+            //Instructions UI appear
+            airInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Earth")
         {
+            earthInstructionUI.SetActive(true);
             airBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Water")
         {
+            waterInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             airBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Fire")
         {
+            fireInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             airBoundary.SetActive(false);
@@ -83,7 +105,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             airFinished = true;
             collectionCounter++;
-            //PlayCollectionNarration();
+            airInstructionUI.SetActive(false);
+            airNotCollectedImage.SetActive(false);
+            airCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
             airHasBeenCollected = true;
             airBoundary.SetActive(false);
@@ -92,7 +116,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             earthFinished = true;
             collectionCounter++;
-            //PlayCollectionNarration();
+            earthInstructionUI.SetActive(false);
+            earthNotCollectedImage.SetActive(false);
+            earthCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
 
             earthHasBeenCollected = true;
@@ -102,7 +128,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             waterFinished = true;
             collectionCounter++;
-            //PlayCollectionNarration();
+            waterInstructionUI.SetActive(false);
+            waterNotCollectedImage.SetActive(false);
+            waterCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
 
             waterHasBeenCollected = true;
@@ -112,7 +140,9 @@ public class BoundaryControlScript : MonoBehaviour
         {
             fireFinished = true;
             collectionCounter++;
-            //PlayCollectionNarration();
+            fireInstructionUI.SetActive(false);
+            fireNotCollectedImage.SetActive(false);
+            fireCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
 
             fireHasBeenCollected = true;

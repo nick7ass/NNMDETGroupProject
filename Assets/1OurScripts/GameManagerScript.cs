@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameManagerScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip introductionClip;
+
+    public VideoPlayer videoPlayerObject;
+
+    public GameObject introCanvas;
 
     public GameObject airBoundary;
     public GameObject earthBoundary;
@@ -19,6 +24,9 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Hello World Hello World");
+
+        videoPlayerObject.Prepare();
+        
 
     }
 
@@ -42,7 +50,8 @@ public class GameManagerScript : MonoBehaviour
 
     IEnumerator IntroductionNarration()
     {
-        audioSource.PlayOneShot(introductionClip);
+        //audioSource.PlayOneShot(introductionClip);
+        videoPlayerObject.Play();
         yield return new WaitForSeconds(introductionClip.length);
         ActivateBoundries();
     }
@@ -54,6 +63,7 @@ public class GameManagerScript : MonoBehaviour
         waterBoundary.SetActive(true);
         earthBoundary.SetActive(true);
         introBound.SetActive(false);
+        introCanvas.SetActive(false);
     }
 
 

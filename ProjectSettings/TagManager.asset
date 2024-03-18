@@ -12,6 +12,8 @@ TagManager:
   - BoundWater
   - BoundEarth
   - BoundHMD
+  - SamplesInfoPanel
+  - VideoPlayerTag
   layers:
   - Default
   - TransparentFX
