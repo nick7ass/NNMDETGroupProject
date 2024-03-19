@@ -8024,17 +8024,17 @@ PrefabInstance:
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.913
+      value: 3.088
       objectReference: {fileID: 0}
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.54
+      value: -2.849
       objectReference: {fileID: 0}
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.024
+      value: -6.144
       objectReference: {fileID: 0}
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
@@ -8448,6 +8448,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -51.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783925343848829909, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783925344654468848, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Use your hand to grab the flower.
       objectReference: {fileID: 0}
     - target: {fileID: 5783925344654468849, guid: 6fde24dee2fae4649aa80e118b805e34,
         type: 3}
@@ -10429,6 +10439,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011523864}
     m_Modifications:
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.99
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10478,6 +10498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097010771710804114, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
@@ -13648,6 +13673,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_Name
@@ -13701,6 +13736,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -51.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783925343848829909, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783925344654468848, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Use your hand to grab the air.
       objectReference: {fileID: 0}
     - target: {fileID: 5783925344654468849, guid: 6fde24dee2fae4649aa80e118b805e34,
         type: 3}
@@ -18064,6 +18109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SymbolsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1675196582151221979, guid: d50782591935947058c65576b54409c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1675196582151221983, guid: d50782591935947058c65576b54409c4,
         type: 3}
       propertyPath: m_Color.a
@@ -19473,10 +19523,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -51.09
       objectReference: {fileID: 0}
+    - target: {fileID: 5783925343848829909, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Collect
+      objectReference: {fileID: 0}
     - target: {fileID: 5783925344654468848, guid: 6fde24dee2fae4649aa80e118b805e34,
         type: 3}
       propertyPath: m_text
-      value: Use your hands to grab the flame.
+      value: Use your hand to grab the flame.
       objectReference: {fileID: 0}
     - target: {fileID: 5783925344654468849, guid: 6fde24dee2fae4649aa80e118b805e34,
         type: 3}
@@ -20316,7 +20371,7 @@ PrefabInstance:
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.58
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 7809210389736015259, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
@@ -20366,7 +20421,7 @@ PrefabInstance:
     - target: {fileID: 7809210389736380859, guid: 3a9b7854188d4405280e2aee6b228fc7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20772,7 +20827,7 @@ Transform:
   m_GameObject: {fileID: 1158165588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 14.07, z: -0.24}
+  m_LocalPosition: {x: 0.03, y: 13.92, z: -0.19}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -20982,8 +21037,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9521153, y: 2.6310592, z: 4.5547028}
-  m_Center: {x: -0.39272606, y: 0.8155296, z: -0.21766186}
+  m_Size: {x: 1.1961064, y: 2.6310592, z: 3.5652711}
+  m_Center: {x: -0.15194008, y: 0.8155296, z: 0.9430082}
 --- !u!54 &1166565592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21149,6 +21204,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011523864}
     m_Modifications:
+    - target: {fileID: 254805342014116847, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21198,6 +21268,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
@@ -26114,6 +26204,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 725491099}
     m_Modifications:
+    - target: {fileID: 255706003311227525, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26162,6 +26257,11 @@ PrefabInstance:
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096187072467362296, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
@@ -35589,6 +35689,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011523864}
     m_Modifications:
+    - target: {fileID: 254805342014116847, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36522,8 +36627,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 610d8eab62248e145a08551da327c921, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39166,7 +39270,7 @@ PrefabInstance:
     - target: {fileID: 2381686859592504023, guid: 95e4f970cffc348e1937878ecd30a6eb,
         type: 3}
       propertyPath: m_Name
-      value: ExCanvasPrefab Variant Variant
+      value: Introduction Video Screen
       objectReference: {fileID: 0}
     - target: {fileID: 2381686859592504023, guid: 95e4f970cffc348e1937878ecd30a6eb,
         type: 3}
@@ -44873,6 +44977,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2011523864}
     m_Modifications:
+    - target: {fileID: 254805342014116847, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -45116,8 +45235,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 610d8eab62248e145a08551da327c921, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -46706,6 +46824,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 725491099}
     m_Modifications:
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -46760,6 +46888,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
@@ -46938,7 +47076,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5b0d294ed2dfc4c37a41f98cb9c8951a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -47496,6 +47634,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 570330952}
     m_Modifications:
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48547,6 +48690,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 570330952}
     m_Modifications:
+    - target: {fileID: 2334973955583471343, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4522539280823768701, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48596,6 +48744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803299175986173597, guid: 327cf65127c86414a83ad3b0a2bc55b0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8280929046561396919, guid: 327cf65127c86414a83ad3b0a2bc55b0,
         type: 3}
@@ -49256,6 +49409,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -51.09
       objectReference: {fileID: 0}
+    - target: {fileID: 5783925343848829909, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Collect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783925344654468848, guid: 6fde24dee2fae4649aa80e118b805e34,
+        type: 3}
+      propertyPath: m_text
+      value: Use your hand to grab the drop of water.
+      objectReference: {fileID: 0}
     - target: {fileID: 5783925344654468849, guid: 6fde24dee2fae4649aa80e118b805e34,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -49469,6 +49632,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -51.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503316873577180350, guid: ee63e9e4a907044968ed60ecbfaf78d6,
+        type: 3}
+      propertyPath: m_text
+      value: Use your hand to pick up the piece of firewood before you and put it
+        into the fire.
       objectReference: {fileID: 0}
     - target: {fileID: 4503316873577180351, guid: ee63e9e4a907044968ed60ecbfaf78d6,
         type: 3}

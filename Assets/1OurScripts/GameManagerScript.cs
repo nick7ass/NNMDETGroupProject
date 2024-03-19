@@ -28,16 +28,9 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log("Hello World Hello World");
 
         videoPlayerObject.Prepare();
-
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //Trigger introduction to when passing boundary
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundHMD") && !introHasBeenEntered)
@@ -46,10 +39,10 @@ public class GameManagerScript : MonoBehaviour
             //Play introduction
             StartCoroutine(IntroductionNarration());
 
-
         }
     }
 
+    //Starting introduction
     IEnumerator IntroductionNarration()
     {
         //audioSource.PlayOneShot(introductionClip);
@@ -60,6 +53,7 @@ public class GameManagerScript : MonoBehaviour
         ActivateBoundries();
     }
 
+    //Activate all the boundaries when introduction is finished, and inactivate the ones for introduction.
     private void ActivateBoundries()
     {
         fireBoundary.SetActive(true);
@@ -69,6 +63,4 @@ public class GameManagerScript : MonoBehaviour
         introBound.SetActive(false);
         introCanvas.SetActive(false);
     }
-
-
 }

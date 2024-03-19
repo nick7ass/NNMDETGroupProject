@@ -40,9 +40,9 @@ public class BoundaryControlScript : MonoBehaviour
 
     // Add references for the AudioSource and narration clips
     public AudioSource narrationSource;
-    public AudioClip[] narrationClips; // Ensure this array is populated in the Inspector with your narration clips
+    public AudioClip[] narrationClips; 
 
-
+    //Removes other boundries when an elemental boundary has been entered.
     public void TempRemoveBoundary(string bound)
     {
         if (bound == "Air")
@@ -76,6 +76,7 @@ public class BoundaryControlScript : MonoBehaviour
         }
     }
 
+    //Reactivate boundries when station has been finished.
     public void ReactivateBoundary()
     {
         if (!airFinished)
@@ -99,6 +100,7 @@ public class BoundaryControlScript : MonoBehaviour
         }
     }
 
+    //Things to happen when an elemental station has been completed. 
     public void RemoveBoundary(string bound)
     {
         if (bound == "Air" && !airHasBeenCollected)
@@ -149,6 +151,7 @@ public class BoundaryControlScript : MonoBehaviour
             fireBoundary.SetActive(false);
         }
     }
+    //Collection counter audio.
     IEnumerator PlayCollectionNarration()
     {
         if (collectionCounter > 0 && collectionCounter <= narrationClips.Length)
@@ -159,9 +162,5 @@ public class BoundaryControlScript : MonoBehaviour
             yield return new WaitForSeconds(narrationClips[collectionCounter - 1].length);
             ReactivateBoundary();
         }
-
     }
-
-    //ADD functionality for detecting when all elements have been collected (eg when collectionCounter
-    //is 4) 
 }

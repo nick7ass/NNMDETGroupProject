@@ -27,7 +27,6 @@ public class BoundEarthScript : MonoBehaviour
         
         if (other.CompareTag("BoundHMD") && !narrationHasFinished && !narrationHasStarted) //
         {
-
             //Removing other bounds temporarily
             boundControl.TempRemoveBoundary("Earth");
 
@@ -50,30 +49,17 @@ public class BoundEarthScript : MonoBehaviour
     public void collectForce() {
         if (narrationHasFinished && !seedHasAppeared)
         {
-            //Force sensor
-            // if (ConnectUnityWithSensors.isForceDetected) 
-            // {
-            //}
             earthObjectToCollect.SetActive(true);
             audioSource.PlayOneShot(narrationClipTwo);
             seedHasAppeared = true;
-
         }
     }
 
-    //Method to remove the boundary when station has been completed.
-    //Start through Unity event wrapper for when item to collect is selected.
     public void stationCompleted()
     {
-        StartCoroutine(RemoveCollectedItem());
         earthObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Earth");
-    }
-
-    IEnumerator RemoveCollectedItem()
-    {
-        yield return new WaitForSeconds(2.0f);
     }
 
 }

@@ -31,8 +31,6 @@ public class FireCollisionAudioScript : MonoBehaviour
             resetParticles();
             isFireBigger = true;
             boundFireScript.CollectFireObject();
-
-                
         } 
     }
 

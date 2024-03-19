@@ -97,17 +97,8 @@ public class BoundAirScript : MonoBehaviour
         windObjectToCollect.SetActive(true);
         audioSource.PlayOneShot(narrationClipTwo);
 
-
-        //StartCoroutine(SecondNarration());
-
-
     }
 
-    /*IEnumerator SecondNarration()
-    {
-        yield return new WaitForSeconds(narrationClipTwo.length);
-
-    }*/
 
     IEnumerator ResetParticleSpeed(float delay)
     {
@@ -135,24 +126,13 @@ public class BoundAirScript : MonoBehaviour
 
         moreSpirals.SetActive(false);
 
-        //isWindActive = false;
-        //canActivateAir = false;
-
     }
 
-    //Method to remove the boundary when station has been completed.
-    //Start through Unity event wrapper for when item to collect is selected.
     public void stationCompleted()
     {
-        StartCoroutine(RemoveCollectedItem());
         windObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Air");
-    }
-
-    IEnumerator RemoveCollectedItem()
-    {
-        yield return new WaitForSeconds(2.0f);
     }
 
 }

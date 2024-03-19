@@ -24,7 +24,6 @@ public class BoundFireScript : MonoBehaviour
     public BoundaryControlScript boundControl;
 
 
-    //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundHMD") && !narrationHasFinished && !narrationHasStarted) //
@@ -51,9 +50,7 @@ public class BoundFireScript : MonoBehaviour
     public void CollectFireObject()
     {
         StartCoroutine(SecondNarrationAndObject());
-        //audioSource.PlayOneShot(narrationClipTwo);
         fireObjectToCollect.SetActive(true);
-
     }
 
     IEnumerator SecondNarrationAndObject()
@@ -61,25 +58,12 @@ public class BoundFireScript : MonoBehaviour
         audioSource.PlayOneShot(narrationClipTwo);
         fireObjectToCollect.SetActive(true);
         yield return new WaitForSeconds(narrationClipTwo.length);
-
     }
-
-
-    //Method to remove the boundary when station has been completed.
-    //Start through Unity event wrapper for when item to collect is selected.
-
-    //Method for controlling when the item is grabbed
 
     public void stationCompleted()
     {
-        StartCoroutine(RemoveCollectedItem());
         fireObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Fire");
-    }
-
-    IEnumerator RemoveCollectedItem()
-    {
-        yield return new WaitForSeconds(2.0f);
     }
 }

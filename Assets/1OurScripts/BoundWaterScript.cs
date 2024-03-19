@@ -21,7 +21,6 @@ public class BoundWaterScript : MonoBehaviour
     public BoundaryControlScript boundControl;
 
 
-    //Use Yield return to like not make it start instantly????
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BoundHMD") && !narrationHasFinished && !narrationHasStarted) //
@@ -61,19 +60,11 @@ public class BoundWaterScript : MonoBehaviour
     }
 
 
-    //Method to remove the boundary when station has been completed.
-    //Start through Unity event wrapper for when item to collect is selected.
-
     public void stationCompleted()
     {
-        StartCoroutine(RemoveCollectedItem());
         waterObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Water");
     }
 
-    IEnumerator RemoveCollectedItem()
-    {
-        yield return new WaitForSeconds(2.0f);
-    }
 }
