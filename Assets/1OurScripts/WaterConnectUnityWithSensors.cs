@@ -6,23 +6,29 @@ using WebSocketSharp; // Ensure this matches the WebSocket library you're using
 
 public class WaterConnectUnityWithSensors : MonoBehaviour
 {
+    // Websocket Service
     WebSocket ws;
-    public string esp32IPAddress = "10.204.0.249";
-    public string esp32WebsocketPort = "81";
+    //public AudioSource audioSource; // Assign in inspector
+    //public AudioClip narrationClip; // Assign in inspector
+    //
+    public string esp32IPAddress = "10.204.0.249"; // Assign your ESP32 IP Address
+    public string esp32WebsocketPort = "81"; // Assign your ESP32 WebSocket port, typically "81"
 
     private bool touchDataReceived = false;
     private int receivedTouchValue = 0;
+
     public static bool isTouchDetected = false;
 
-    int threshold = 14000;
+    int threshhold = 14000;
 
-    private Coroutine touchCheckCoroutine = null; // Reference to the coroutine
 
-    public BoundWaterScript waterScript = new BoundWaterScript();
+    public BoundWaterScript waterScript;
 
     void Start()
     {
+
         ConnectWithESP32();
+
     }
 
     public void ConnectWithESP32()
@@ -38,55 +44,40 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
         {
             Debug.Log("Received message: " + e.Data);
             int parsedValue;
-            if (int.TryParse(e.Data, out parsedValue))
+            bool isNumeric = int.TryParse(e.Data, out parsedValue);
+            if (isNumeric)
             {
                 receivedTouchValue = parsedValue;
-                touchDataReceived = true;
-
-                if (receivedTouchValue >= threshold && !isTouchDetected)
-                {
-                    Debug.Log("Touch detected, cancelling timeout.");
-                    isTouchDetected = true;
-                    waterScript.collectTouch();
-
-                    // Cancel the timeout coroutine if it's running
-                    if (touchCheckCoroutine != null)
-                    {
-                        StopCoroutine(touchCheckCoroutine);
-                        touchCheckCoroutine = null;
-                    }
-                }
+                touchDataReceived = true; // Indicate that new data has been received
             }
         };
         ws.Connect();
         Debug.Log("Websocket state - " + ws.ReadyState);
     }
 
-    void Update()
-    {
-        if (waterScript.narrationHasFinished && !waterScript.dropHasAppeared && !isTouchDetected)
-        {
-            Debug.Log("Checking for touch...");
 
-            // Start the timeout coroutine only if it hasn't been started yet
-            if (touchCheckCoroutine == null)
+
+    void Update()
+    {//Change to Water script 
+        if (waterScript.narrationHasFinished && !waterScript.dropHasAppeared)
+        {
+            Debug.Log("Asking for touch.");
+
+            ws.Send("Need Touch");
+
+            if (touchDataReceived)
             {
-                touchCheckCoroutine = StartCoroutine(IfTouchUnavailable());
+                if (receivedTouchValue >= threshhold)
+                {
+                    Debug.Log("Touch threshold exceeded, action triggered.");
+                    isTouchDetected = true;
+                    waterScript.collectTouch();
+
+                }
+                touchDataReceived = false; // Reset for the next message
             }
         }
-    }
 
-    IEnumerator IfTouchUnavailable()
-    {
-        yield return new WaitForSeconds(30); // Wait for 30 seconds
-
-        // Trigger the action if no touch has been detected by this time
-        if (!isTouchDetected)
-        {
-            Debug.Log("No touch detected within 30 seconds, action triggered.");
-            isTouchDetected = true;
-            waterScript.collectTouch();
-        }
     }
 
     void OnDestroy()
@@ -96,4 +87,5 @@ public class WaterConnectUnityWithSensors : MonoBehaviour
             ws.Close();
         }
     }
+
 }

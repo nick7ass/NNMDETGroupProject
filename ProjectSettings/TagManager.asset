@@ -14,6 +14,7 @@ TagManager:
   - BoundHMD
   - SamplesInfoPanel
   - VideoPlayerTag
+  - Hand
   layers:
   - Default
   - TransparentFX

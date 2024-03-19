@@ -12,9 +12,8 @@ public class ConnectUnityWithSensors : MonoBehaviour
 
     private bool forceDataReceived = false;
     private int receivedForceValue = 0;
-    public static bool isForceDetected = false;
-
-    private Coroutine forceCheckCoroutine = null; // Reference to the coroutine for managing its lifecycle
+    private bool isForceDetected = false;
+    private bool waitForForceCoroutineStarted = false; // New flag to control coroutine start
 
     public BoundEarthScript earthScript = new BoundEarthScript();
 
@@ -27,33 +26,18 @@ public class ConnectUnityWithSensors : MonoBehaviour
     {
         Debug.Log("Connecting Unity with ESP32 via Websockets...");
         ws = new WebSocket($"ws://{esp32IPAddress}:{esp32WebsocketPort}");
-        ws.OnOpen += (sender, e) =>
-        {
+        ws.OnOpen += (sender, e) => {
             Debug.Log("WebSocket connected");
             ws.Send("Hello from Unity!");
         };
-        ws.OnMessage += (sender, e) =>
-        {
+        ws.OnMessage += (sender, e) => {
             Debug.Log("Received message: " + e.Data);
             int parsedValue;
-            if (int.TryParse(e.Data, out parsedValue))
+            bool isNumeric = int.TryParse(e.Data, out parsedValue);
+            if (isNumeric)
             {
                 receivedForceValue = parsedValue;
                 forceDataReceived = true;
-
-                if (receivedForceValue > 100 && !isForceDetected)
-                {
-                    Debug.Log("Force detected immediately, cancelling timeout.");
-                    isForceDetected = true;
-                    earthScript.collectForce();
-
-                    // Cancel the timeout coroutine if it's running
-                    if (forceCheckCoroutine != null)
-                    {
-                        StopCoroutine(forceCheckCoroutine);
-                        forceCheckCoroutine = null;
-                    }
-                }
             }
         };
         ws.Connect();
@@ -62,26 +46,32 @@ public class ConnectUnityWithSensors : MonoBehaviour
 
     void Update()
     {
-        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared && !isForceDetected)
+        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared && !waitForForceCoroutineStarted)
         {
-            Debug.Log("Checking for force...");
+            Debug.Log("Asking for force.");
+            ws.Send("Need Force");
+            StartCoroutine(IfForceUnavailable());
+            waitForForceCoroutineStarted = true; // Ensure coroutine is started only once
+        }
 
-            // Start the timeout coroutine only if it hasn't been started yet
-            if (forceCheckCoroutine == null)
+        if (forceDataReceived)
+        {
+            if (receivedForceValue > 100 && !isForceDetected)
             {
-                forceCheckCoroutine = StartCoroutine(IfForceUnavailable());
+                Debug.Log("Force threshold exceeded, action triggered.");
+                isForceDetected = true;
+                earthScript.collectForce();
             }
+            forceDataReceived = false; // Reset for the next message
         }
     }
 
     IEnumerator IfForceUnavailable()
     {
-        yield return new WaitForSeconds(30); // Wait for 30 seconds
-
-        // Trigger the action if no force has been detected by this time
+        yield return new WaitForSeconds(10); // Ensure this is 30 seconds, not 30000
         if (!isForceDetected)
         {
-            Debug.Log("No force detected within 30 seconds, action triggered.");
+            Debug.Log("No force detected in 30 seconds, triggering action.");
             isForceDetected = true;
             earthScript.collectForce();
         }
