@@ -10,6 +10,8 @@ public class GameManagerScript : MonoBehaviour
 
     public VideoPlayer videoPlayerObject;
 
+    public GameObject videoPicture;
+    public GameObject videoPictureReplace;
     public GameObject introCanvas;
 
     public GameObject airBoundary;
@@ -26,14 +28,14 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log("Hello World Hello World");
 
         videoPlayerObject.Prepare();
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -43,7 +45,7 @@ public class GameManagerScript : MonoBehaviour
             introHasBeenEntered = true;
             //Play introduction
             StartCoroutine(IntroductionNarration());
-            
+
 
         }
     }
@@ -52,6 +54,8 @@ public class GameManagerScript : MonoBehaviour
     {
         //audioSource.PlayOneShot(introductionClip);
         videoPlayerObject.Play();
+        videoPictureReplace.SetActive(true);
+        videoPicture.SetActive(false);
         yield return new WaitForSeconds(introductionClip.length);
         ActivateBoundries();
     }

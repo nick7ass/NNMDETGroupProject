@@ -6,26 +6,21 @@ using WebSocketSharp; // Ensure this matches the WebSocket library you're using
 
 public class ConnectUnityWithSensors : MonoBehaviour
 {
-    // Websocket Service
     WebSocket ws;
-    //public AudioSource audioSource; // Assign in inspector
-    //public AudioClip narrationClip; // Assign in inspector
-    //
-    public string esp32IPAddress = "10.204.0.248"; // Assign your ESP32 IP Address
-    public string esp32WebsocketPort = "81"; // Assign your ESP32 WebSocket port, typically "81"
+    public string esp32IPAddress = "10.204.0.248";
+    public string esp32WebsocketPort = "81";
 
     private bool forceDataReceived = false;
     private int receivedForceValue = 0;
-
     public static bool isForceDetected = false;
+
+    private Coroutine forceCheckCoroutine = null; // Reference to the coroutine for managing its lifecycle
 
     public BoundEarthScript earthScript = new BoundEarthScript();
 
     void Start()
     {
-
         ConnectWithESP32();
-        
     }
 
     public void ConnectWithESP32()
@@ -41,42 +36,55 @@ public class ConnectUnityWithSensors : MonoBehaviour
         {
             Debug.Log("Received message: " + e.Data);
             int parsedValue;
-            bool isNumeric = int.TryParse(e.Data, out parsedValue);
-            if (isNumeric)
+            if (int.TryParse(e.Data, out parsedValue))
             {
                 receivedForceValue = parsedValue;
-                forceDataReceived = true; // Indicate that new data has been received
+                forceDataReceived = true;
+
+                if (receivedForceValue > 100 && !isForceDetected)
+                {
+                    Debug.Log("Force detected immediately, cancelling timeout.");
+                    isForceDetected = true;
+                    earthScript.collectForce();
+
+                    // Cancel the timeout coroutine if it's running
+                    if (forceCheckCoroutine != null)
+                    {
+                        StopCoroutine(forceCheckCoroutine);
+                        forceCheckCoroutine = null;
+                    }
+                }
             }
         };
         ws.Connect();
         Debug.Log("Websocket state - " + ws.ReadyState);
     }
 
-    
-
     void Update()
     {
-        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared)
+        if (earthScript.narrationHasFinished && !earthScript.seedHasAppeared && !isForceDetected)
         {
-            Debug.Log("Asking for force.");
+            Debug.Log("Checking for force...");
 
-            ws.Send("Need Force");
-
-            if (forceDataReceived)
+            // Start the timeout coroutine only if it hasn't been started yet
+            if (forceCheckCoroutine == null)
             {
-                if (receivedForceValue > 100)
-                {
-                    Debug.Log("Force threshold exceeded, action triggered.");
-                    isForceDetected = true;
-                    earthScript.collectForce();
-
-                }
-                forceDataReceived = false; // Reset for the next message
+                forceCheckCoroutine = StartCoroutine(IfForceUnavailable());
             }
         }
+    }
 
+    IEnumerator IfForceUnavailable()
+    {
+        yield return new WaitForSeconds(30); // Wait for 30 seconds
 
-
+        // Trigger the action if no force has been detected by this time
+        if (!isForceDetected)
+        {
+            Debug.Log("No force detected within 30 seconds, action triggered.");
+            isForceDetected = true;
+            earthScript.collectForce();
+        }
     }
 
     void OnDestroy()
@@ -86,5 +94,4 @@ public class ConnectUnityWithSensors : MonoBehaviour
             ws.Close();
         }
     }
-
 }
