@@ -10,12 +10,6 @@ public class BoundaryControlScript : MonoBehaviour
     public GameObject waterBoundary;
     public GameObject fireBoundary;
 
-    //Instruction UI's
-    public GameObject airInstructionUI;
-    public GameObject earthInstructionUI;
-    public GameObject waterInstructionUI;
-    public GameObject fireInstructionUI;
-
     //Collection images
     public GameObject airNotCollectedImage;
     public GameObject airCollectedImage;
@@ -47,29 +41,24 @@ public class BoundaryControlScript : MonoBehaviour
     {
         if (bound == "Air")
         {
-            //Instructions UI appear
-            airInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Earth")
         {
-            earthInstructionUI.SetActive(true);
             airBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Water")
         {
-            waterInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             airBoundary.SetActive(false);
             fireBoundary.SetActive(false);
         }
         else if (bound == "Fire")
         {
-            fireInstructionUI.SetActive(true);
             earthBoundary.SetActive(false);
             waterBoundary.SetActive(false);
             airBoundary.SetActive(false);
@@ -107,7 +96,6 @@ public class BoundaryControlScript : MonoBehaviour
         {
             airFinished = true;
             collectionCounter++;
-            airInstructionUI.SetActive(false);
             airNotCollectedImage.SetActive(false);
             airCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
@@ -118,7 +106,6 @@ public class BoundaryControlScript : MonoBehaviour
         {
             earthFinished = true;
             collectionCounter++;
-            earthInstructionUI.SetActive(false);
             earthNotCollectedImage.SetActive(false);
             earthCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
@@ -130,7 +117,6 @@ public class BoundaryControlScript : MonoBehaviour
         {
             waterFinished = true;
             collectionCounter++;
-            waterInstructionUI.SetActive(false);
             waterNotCollectedImage.SetActive(false);
             waterCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());
@@ -142,7 +128,6 @@ public class BoundaryControlScript : MonoBehaviour
         {
             fireFinished = true;
             collectionCounter++;
-            fireInstructionUI.SetActive(false);
             fireNotCollectedImage.SetActive(false);
             fireCollectedImage.SetActive(true);
             StartCoroutine(PlayCollectionNarration());

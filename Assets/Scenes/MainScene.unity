@@ -8971,8 +8971,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.95211536, y: 1.4736786, z: 4.5547028}
-  m_Center: {x: -0.3927261, y: 0.23683935, z: -0.21766186}
+  m_Size: {x: 0.95211536, y: 1.5365968, z: 4.5547028}
+  m_Center: {x: -0.3927261, y: 0.2682984, z: -0.21766186}
 --- !u!54 &515544900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10768,6 +10768,7 @@ MonoBehaviour:
   narrationClip: {fileID: 8300000, guid: 687001dfd7eb24ccca4eb0e4db510dca, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: 8cb9b31b6571647878893398d64e6f19, type: 3}
   windObjectToCollect: {fileID: 140392492}
+  airInstructionUI: {fileID: 770984586}
   boundControl: {fileID: 979159588}
 --- !u!82 &579970260
 AudioSource:
@@ -11720,6 +11721,7 @@ MonoBehaviour:
   narrationClipTwo: {fileID: 8300000, guid: deff384217dfb4266aa229b913f8fd03, type: 3}
   fireObjectToThrow: {fileID: 1155277585}
   fireObjectToCollect: {fileID: 282901708}
+  fireInstructionUI: {fileID: 5235938035743833251}
   boundControl: {fileID: 979159588}
 --- !u!1001 &636743900
 PrefabInstance:
@@ -16389,10 +16391,6 @@ MonoBehaviour:
   earthBoundary: {fileID: 1596973207}
   waterBoundary: {fileID: 1726060519}
   fireBoundary: {fileID: 634926185}
-  airInstructionUI: {fileID: 770984586}
-  earthInstructionUI: {fileID: 1752584107}
-  waterInstructionUI: {fileID: 751470795}
-  fireInstructionUI: {fileID: 5235938035743833251}
   airNotCollectedImage: {fileID: 1048445217}
   airCollectedImage: {fileID: 252265085}
   earthNotCollectedImage: {fileID: 484134552}
@@ -36109,6 +36107,7 @@ MonoBehaviour:
   narrationClip: {fileID: 8300000, guid: 94cf8154f1b9943aba707d774a2821c7, type: 3}
   narrationClipTwo: {fileID: 8300000, guid: bf45e15b36fce434c9dbb9ce462fef79, type: 3}
   earthObjectToCollect: {fileID: 31480962}
+  earthInstructionUI: {fileID: 1752584107}
   boundControl: {fileID: 979159588}
 --- !u!1001 &1601739639
 PrefabInstance:
@@ -38342,9 +38341,10 @@ MonoBehaviour:
   dropHasAppeared: 0
   narrationHasStarted: 0
   audioSource: {fileID: 171465764}
-  narrationClip: {fileID: 8300000, guid: 08211c0f27d2740228ddd729a21f516f, type: 3}
-  narrationClipTwo: {fileID: 8300000, guid: 323fb72f2a17b47deb655682a5f8e963, type: 3}
+  narrationClip: {fileID: 8300000, guid: 323fb72f2a17b47deb655682a5f8e963, type: 3}
+  narrationClipTwo: {fileID: 8300000, guid: 86108e3698a924d59860ac92e3cc414a, type: 3}
   waterObjectToCollect: {fileID: 297646202}
+  waterInstructionUI: {fileID: 751470795}
   boundControl: {fileID: 979159588}
 --- !u!1 &1726452294
 GameObject:

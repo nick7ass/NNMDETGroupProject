@@ -14,6 +14,8 @@ public class BoundWaterScript : MonoBehaviour
 
     public GameObject waterObjectToCollect;
 
+    public GameObject waterInstructionUI;
+
     private bool objectHasBeenCollected = false;
 
 
@@ -41,9 +43,8 @@ public class BoundWaterScript : MonoBehaviour
     {
         narrationHasStarted = true;
         audioSource.PlayOneShot(narrationClip);
-
         yield return new WaitForSeconds(narrationClip.length);
-
+        waterInstructionUI.SetActive(true);
         narrationHasFinished = true;
 
     }
@@ -62,6 +63,7 @@ public class BoundWaterScript : MonoBehaviour
 
     public void stationCompleted()
     {
+        waterInstructionUI.SetActive(false);
         waterObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Water");

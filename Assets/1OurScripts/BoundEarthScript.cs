@@ -15,6 +15,8 @@ public class BoundEarthScript : MonoBehaviour
 
     public GameObject earthObjectToCollect;
 
+    public GameObject earthInstructionUI;
+
     private bool objectHasBeenCollected = false;
 
 
@@ -41,9 +43,8 @@ public class BoundEarthScript : MonoBehaviour
         audioSource.PlayOneShot(narrationClip);
         
         yield return new WaitForSeconds(narrationClip.length);
-
         narrationHasFinished = true;
-
+        earthInstructionUI.SetActive(true);
     }
 
     public void collectForce() {
@@ -57,6 +58,7 @@ public class BoundEarthScript : MonoBehaviour
 
     public void stationCompleted()
     {
+        earthInstructionUI.SetActive(false);
         earthObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Earth");

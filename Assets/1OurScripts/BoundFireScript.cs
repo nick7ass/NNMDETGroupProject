@@ -15,6 +15,8 @@ public class BoundFireScript : MonoBehaviour
     public GameObject fireObjectToThrow;
     public GameObject fireObjectToCollect;
 
+    public GameObject fireInstructionUI;
+
     private bool objectHasBeenCollected = false;
 
 
@@ -44,7 +46,7 @@ public class BoundFireScript : MonoBehaviour
         yield return new WaitForSeconds(narrationClip.length);
         fireObjectToThrow.SetActive(true);
         narrationHasFinished = true;
-
+        fireInstructionUI.SetActive(true);
     }
 
     public void CollectFireObject()
@@ -62,6 +64,7 @@ public class BoundFireScript : MonoBehaviour
 
     public void stationCompleted()
     {
+        fireInstructionUI.SetActive(false);
         fireObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Fire");

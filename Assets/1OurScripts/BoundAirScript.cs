@@ -26,6 +26,8 @@ public class BoundAirScript : MonoBehaviour
 
     private bool objectHasBeenCollected = false;
 
+    public GameObject airInstructionUI;
+
 
     //Boundary control
     public BoundaryControlScript boundControl;
@@ -57,6 +59,8 @@ public class BoundAirScript : MonoBehaviour
         audioSource.PlayOneShot(narrationClip);
         yield return new WaitForSeconds(narrationClip.length);
         canActivateAir = true;
+        //Instructions UI appear
+        airInstructionUI.SetActive(true);
     }
 
 
@@ -130,6 +134,7 @@ public class BoundAirScript : MonoBehaviour
 
     public void stationCompleted()
     {
+        airInstructionUI.SetActive(false);
         windObjectToCollect.SetActive(false);
         //boundControl.ReactivateBoundary();
         boundControl.RemoveBoundary("Air");
